@@ -1,0 +1,13 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.env
+*.pem
+*.key
+id_rsa*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

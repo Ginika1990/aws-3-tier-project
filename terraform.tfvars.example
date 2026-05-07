@@ -1,0 +1,4 @@
+# Example only. Do not put real secrets here.
+
+aws_region   = "eu-west-1"
+project_name = "aws-3-tier-project"
