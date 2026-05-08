@@ -89,6 +89,10 @@ variable "domain-name" {
   default     = "myapp.example.com"
 }
 
+variable "domain_name" {
+  description = "Domain name managed by Route 53"
+  type        = string
+}
 #variable "namecheap_api_user" {
 #description = "Namecheap API user"
 #type        = string
