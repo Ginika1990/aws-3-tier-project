@@ -10,7 +10,7 @@ on:
 
 jobs:
   terraform-checks:
-    name: Terraform
+    name: aws-terraform-private-runner
     runs-on: self-hosted
 
     steps:
