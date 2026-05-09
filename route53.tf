@@ -1,7 +1,9 @@
 resource "aws_route53_zone" "main" {
-  name = var.domain-name
-}
+  name          = var.domain_name
+  comment       = "Managed by Terraform"
+  force_destroy = false
 
-output "route53_nameservers" {
-  value = aws_route53_zone.main.name_servers
+  lifecycle {
+    prevent_destroy = true
+  }
 }
