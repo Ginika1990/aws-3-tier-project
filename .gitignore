@@ -15,3 +15,11 @@ override.tf.json
 # Local environment secret files
 .env
 **/.env
+
+# Terraform local files
+*.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+
+*.tfvars
