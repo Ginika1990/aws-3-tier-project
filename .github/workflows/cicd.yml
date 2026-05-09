@@ -1,16 +1,15 @@
-name: Terraform CI
+name: Terraform CI/CD
 
 on:
   push:
     branches:
     - main
-  pull_request:
   workflow_dispatch:
 
 
 jobs:
-  terraform-checks:
-    name: aws-terraform-private-runner
+  terraform:
+    name: Terraform Plan and Apply
     runs-on: self-hosted
 
     steps:
@@ -23,8 +22,15 @@ jobs:
     - name: Terraform Format Check
       run: terraform fmt -check -recursive
 
-    - name: Terraform Init Without Backend
-      run: terraform init -backend=false
+    - name: Terraform Init
+      run: terraform init
 
     - name: Terraform Validate
       run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan
+
+    - name: Terraform Apply
+      if: github.event_name == 'workflow_dispatch'
+      run: terraform apply -auto-approve tfplan
