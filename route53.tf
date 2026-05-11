@@ -1,9 +1,9 @@
-resource "aws_route53_zone" "main" {
-  name          = var.domain_name
-  comment       = "Managed by Terraform"
-  force_destroy = false
+# resource "aws_route53_zone" "main" {
+#   name          = var.domain_name
+#   comment       = "Managed by Terraform"
+#   force_destroy = false
 
-  lifecycle {
-    prevent_destroy = true
-  }
-}
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
