@@ -65,6 +65,12 @@ resource "helm_release" "argocd" {
   version          = "5.51.6"
   namespace        = "argocd"
   create_namespace = true
-  values           = [file("${path.module}/argocd-values.yaml")]
-  depends_on       = [helm_release.nginx_ingress, helm_release.cert_manager]
+
+  wait            = true
+  timeout         = 900
+  atomic          = true
+  cleanup_on_fail = true
+
+  values     = [file("${path.module}/argocd-values.yaml")]
+  depends_on = [helm_release.nginx_ingress, helm_release.cert_manager]
 }
