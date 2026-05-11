@@ -1,0 +1,30 @@
+name: Terraform Destroy
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  destroy:
+    name: Destroy AWS Infrastructure
+    runs-on: self-hosted
+
+    env:
+      TF_INPUT: "false"
+      TF_VAR_domain_name: "${{ vars.DOMAIN_NAME }}"
+      TF_VAR_desired_size: "5"
+      TF_VAR_max_size: "5"
+      TF_VAR_min_size: "2"
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Destroy
+      run: terraform destroy -input=false -auto-approve
